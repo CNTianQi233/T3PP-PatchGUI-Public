@@ -1,0 +1,69 @@
+<UserControl x:Class="PatchGUI.DebugSettingsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+    <StackPanel>
+        <TextBlock x:Name="TitleText"
+                   Text="模拟错误"
+                   FontSize="12"
+                   Opacity="0.7"
+                   Margin="0,0,0,8" />
+
+        <ItemsControl x:Name="Items">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding DisplayName}"
+                                   FontSize="13"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,12,0" />
+
+                        <ui:Button Grid.Column="1"
+                                   Style="{DynamicResource AnimatedButtonStyle}"
+                                   Appearance="Secondary"
+                                   Width="100"
+                                   Height="40"
+                                   Tag="{Binding Id}"
+                                   Click="ActivateButton_Click">
+                            <TextBlock Text="{Binding ActivateText}" />
+                        </ui:Button>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <TextBlock x:Name="TaskbarTitleText"
+                   Text="Taskbar"
+                   FontSize="12"
+                   Opacity="0.7"
+                   Margin="0,14,0,8" />
+
+        <Grid Margin="0,0,0,6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="TaskbarTestLabel"
+                       Text="Test Taskbar"
+                       FontSize="13"
+                       VerticalAlignment="Center"
+                       Margin="0,0,12,0" />
+
+            <ui:Button Grid.Column="1"
+                       Style="{DynamicResource AnimatedButtonStyle}"
+                       Appearance="Secondary"
+                       Width="100"
+                       Height="40"
+                       Click="OpenTaskbarTestButton_Click">
+                <TextBlock x:Name="TaskbarTestButtonText"
+                           Text="Open" />
+            </ui:Button>
+        </Grid>
+    </StackPanel>
+</UserControl>
