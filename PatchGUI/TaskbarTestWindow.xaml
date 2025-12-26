@@ -1,0 +1,120 @@
+<ui:FluentWindow x:Class="PatchGUI.TaskbarTestWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+                 Title="Taskbar Test"
+                 Width="460"
+                 Height="360"
+                 MinWidth="420"
+                 MinHeight="300"
+                 ExtendsContentIntoTitleBar="True"
+                 WindowBackdropType="Mica"
+                 WindowCornerPreference="Round"
+                 WindowStartupLocation="CenterOwner">
+    <Grid x:Name="RootGrid"
+          Background="{DynamicResource WindowBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     x:Name="WindowTitleBar"
+                     Title="Taskbar Test"
+                     ShowMinimize="False"
+                     ShowMaximize="False"
+                     ShowClose="True" />
+
+        <Grid Grid.Row="1"
+              Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="HeaderText"
+                       Text="Taskbar Test"
+                       FontSize="18"
+                       FontWeight="SemiBold" />
+
+            <TextBlock Grid.Row="2"
+                       x:Name="DescriptionText"
+                       Text="Test taskbar progress states."
+                       Opacity="0.7"
+                       TextWrapping="Wrap" />
+
+            <StackPanel Grid.Row="4"
+                        Orientation="Vertical">
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="StateLabel"
+                               Text="State"
+                               VerticalAlignment="Center"
+                               Opacity="0.8" />
+
+                    <ComboBox Grid.Column="1"
+                              x:Name="StateComboBox"
+                              MinWidth="180"
+                              DisplayMemberPath="DisplayName"
+                              SelectionChanged="StateComboBox_SelectionChanged" />
+                </Grid>
+
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="ValueLabel"
+                               Text="Progress"
+                               VerticalAlignment="Center"
+                               Opacity="0.8" />
+
+                    <Slider Grid.Column="1"
+                            x:Name="ValueSlider"
+                            Minimum="0"
+                            Maximum="100"
+                            TickFrequency="1"
+                            IsSnapToTickEnabled="False"
+                            ValueChanged="ValueSlider_ValueChanged" />
+
+                    <TextBlock Grid.Column="2"
+                               x:Name="ValueText"
+                               Text="0%"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center" />
+                </Grid>
+
+                <ProgressBar x:Name="PreviewProgressBar"
+                             Height="6"
+                             Minimum="0"
+                             Maximum="100"
+                             Value="0" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="5"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,14,0,0">
+                <ui:Button x:Name="ResetButton"
+                           Appearance="Secondary"
+                           Width="120"
+                           Height="40"
+                           Click="ResetButton_Click">
+                    <TextBlock x:Name="ResetButtonText"
+                               Text="Reset" />
+                </ui:Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</ui:FluentWindow>
